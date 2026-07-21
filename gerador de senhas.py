@@ -1,21 +1,21 @@
 import random
 
-caracteres = "+-/*!&$#?=@abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+caracteres = "+-/*!&$#?=@abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
 tamanho = int(input("digite o numero de caracteres da sua senha\n"))
 senha = ""
-condicao = input("vc gostaria que algum caractere não possa ser utilizado\n").lower
+
+condicao = input("vc gostaria que algum caractere não possa ser utilizado\n").lower()
 if condicao == "sim":
     verif = True
-    bloq = input("qual caractere vc gostaria de bloquear\n")
+    bloq = input("quais caracteres vc gostaria de bloquear (sem espaço entre eles)\n")
 else:
     verif = False
+    bloq = ""
 
-for i in range(tamanho):
+while len(senha) < tamanho:
     digito = random.choice(caracteres)
-    if verif == True and digito == bloq:
-        tamanho + 1
+    if verif and digito in bloq:
         continue
-    else:
-        senha += digito
+    senha += digito
 
 print(senha)
